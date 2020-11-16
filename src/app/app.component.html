@@ -1,0 +1,21 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155244806-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-155244806-1');
+</script>
+
+<div *ngIf="quizService.ready">
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+</div>
+
+  <div id ="center" style="margin:auto auto;"></div>
+    <div *ngIf="showLoadingIndicator || !quizService.ready">
+      <mat-spinner style="position: absolute;top: 0; bottom: 0; left: 0; right: 0; margin: auto;" ></mat-spinner></div>
+  
+  

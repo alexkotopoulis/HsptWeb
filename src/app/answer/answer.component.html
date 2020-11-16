@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+  <span>{{quizService.getTestType()}} Vocabulary Quiz</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span><button mat-raised-button class="button" (click)="authService.signOut()">Logout</button></span>
+</mat-toolbar>
+
+<mat-card class="example-card">
+	<mat-card-header>
+		<mat-card-title style="margin-left:-16px;">
+			<div *ngIf="isCorrect()">
+				<p>
+					<font color="green">Answer is correct</font>
+				</p>
+			</div>
+			<div *ngIf="! isCorrect()">
+				<p>
+					<font color="red">Answer is wrong</font>
+				</p>
+			</div>
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<p><b>{{quizService.getQuestion().word}}</b></p>
+		<p></p>
+		<div>
+			<div *ngIf="! isCorrect()">
+				<font color="red">Correct answer is: </font>
+			</div><i>{{quizService.getQuestion().answers[quizService.getQuestionFeedback().correctChoice]}}</i>
+		</div>
+		<p></p>
+
+		<div *ngIf="isFinished()">
+			<p>
+			<b>You finished the quiz!</b>
+			</p>
+		</div>
+		<p></p>
+		<mat-card class="example-card">
+			<p>You got {{getPassPercentage()}}% correct: {{quizService.getQuiz().numPass}} words correct;
+				{{quizService.getQuiz().numFail}} words wrong;</p>
+		</mat-card>
+		<div *ngIf="isFinished()">
+			<mat-card class="example-card">
+				<div *ngIf="failedWords.length > 0">
+				<b>Failed words this time:</b>
+				</div>
+				<ul>
+					<div *ngFor="let word of failedWords">
+						<li>{{word.word}}: {{word.meaning}} ({{word.totalPass}}/{{word.totalFail}})</li>
+					</div>
+				</ul>
+
+				Overall passed words: {{quizService.getQuiz().totalPass}} <br />
+				Overall failed words: {{quizService.getQuiz().totalFail}} <br />
+				Overall rare words: {{quizService.getQuiz().totalRare}} <br />
+
+				<p></p>
+			</mat-card>
+		</div>
+	</mat-card-content>
+	<mat-card-actions>
+		<div *ngIf="isFinished()">
+			<button mat-raised-button color="primary" (click)="onSubmitNewTest()">Start new Test</button>
+		</div>
+		<div *ngIf="! isFinished()">
+			<button mat-raised-button color="primary" (click)="onSubmit()">Next Question</button>
+
+		</div>
+	</mat-card-actions>
+</mat-card>

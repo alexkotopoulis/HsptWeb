@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <span>{{quizService.getTestType()}} Vocabulary Quiz</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span><button mat-raised-button class="button" (click)="authService.signOut()">Logout</button></span>
+</mat-toolbar>
+
+<mat-card class="example-card">
+<mat-card-content>
+  <!--
+<ul>
+  <li>Topic: HSPT Vocabulary</li>
+  <li>Number of questions: {{user.numQuestions}}</li>
+  <li>Questions are random: {{user.random}}</li>
+</ul>
+-->
+<form [formGroup]="quizForm">
+
+  <p><mat-form-field class="example-margin"><input matInput type="text" placeholder="Number of Questions" formControlName="numQuestionsStr"></mat-form-field></p>
+<p><mat-radio-group class = "tp-radio-group" formControlName = "testType">
+    <mat-radio-button class = "tp-radio-button" value = "hspt">HSPT</mat-radio-button>&nbsp;
+    <mat-radio-button class = "tp-radio-button" value = "sat">SAT</mat-radio-button>
+</mat-radio-group></p>
+
+
+<mat-radio-group class = "tp-radio-group" formControlName = "wordsRandom">
+    <p><mat-radio-button class = "tp-radio-button" value = "true">Words picked at random</mat-radio-button></p>
+    <p><mat-radio-button class = "tp-radio-button" value = "false">Words picked proportionally</mat-radio-button></p>
+</mat-radio-group>
+
+      
+
+<table border="0">
+  <tr><td width = "10%"></td><td><mat-slider (change)="failSlider()" [(value)]="user.failPct"></mat-slider> <label id="lblName">{{user.failPct}}% Failed Questions</label></td></tr>
+  <tr><td></td><td><mat-slider  (change)="rareSlider()" [(value)]="user.rarePct"></mat-slider> <label id="lblName">{{user.rarePct}}</label>% New Questions</td></tr>
+   <tr><td></td><td><mat-slider  (change)="passSlider()" [(value)]="user.passPct"></mat-slider> <label id="lblName">{{user.passPct}}</label>% Passed Questions</td></tr>
+</table>
+
+
+</form>
+
+ </mat-card-content>
+ <mat-card-actions><button mat-raised-button class="button" color="primary" (click)="onSubmit(quizForm.value)">Start Quiz</button></mat-card-actions> 
+</mat-card>
+
+
