@@ -1,6 +1,6 @@
-# HSPTWeb
+# School Vocabulary Quiz Web Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+This project contains the web frontend portion of a web application to train and test for school vocabulary, in particular the High School Placement Test (HSPT) vocabulary questions in the Reading Comprehension section. The frontend portion consists of a Angular-based Web UI that needs to be paired with the [SpringBoot-based backend](https://github.com/alexkotopoulis/HsptBackend).
 
 ## Development server
 
