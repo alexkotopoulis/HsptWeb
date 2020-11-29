@@ -1,6 +1,6 @@
 # School Vocabulary Quiz Web Frontend
 
-This project contains the web frontend portion of a web application to train and test for school vocabulary, in particular the High School Placement Test (HSPT) vocabulary questions in the Reading Comprehension section. The frontend portion consists of a Angular-based Web UI that needs to be paired with the [SpringBoot-based backend](https://github.com/alexkotopoulis/HsptBackend).
+This project contains the web frontend portion of a web application to train and test for school vocabulary, in particular the High School Placement Test (HSPT) vocabulary questions in the Reading Comprehension section. \The frontend portion consists of a Angular-based Web UI that needs to be paired with the [SpringBoot-based backend](https://github.com/alexkotopoulis/HsptBackend).
 
 The frontend and backend use [Google Sign-In](https://developers.google.com/identity/sign-in/web) for authentication of users. In order to deploy the web application you will need to sign up for Google Sign-In and create a Client ID. The id needs to be stored in /src/environments/environment.ts. Please see /src/environments/environment.ts.example for details.
 
